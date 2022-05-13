@@ -18,12 +18,12 @@
 
         <v-spacer></v-spacer>
 
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
+        <v-btn icon @click="$router.push('/')">
+          <v-icon>mdi-home</v-icon>
         </v-btn>
 
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
+        <v-btn icon @click="$router.push('/cart')">
+          <v-icon>mdi-cart</v-icon>
         </v-btn>
 
         <v-btn icon>
