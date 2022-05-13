@@ -12,14 +12,15 @@
           lazy-validation
       >
         <v-text-field
-            v-model="name"
+            v-model.trim="name"
             :rules="nameRules"
+            :counter="10"
             label="Имя"
             required
         ></v-text-field>
 
         <v-text-field
-            v-model="email"
+            v-model.trim="email"
             :rules="emailRules"
             label="E-mail"
             required
@@ -39,24 +40,29 @@
   </v-card>
 </template>
 
-<script setup>
-const form = ref();
-let valid = true;
-let name = '';
-const nameRules = [
-  v => !!v || 'Это поле нужно заполнить',
-];
-const email = '';
-const emailRules = [
-  v => !!v || 'Это поле нужно заполнить',
-  v => /.+@.+\..+/.test(v) || 'Введите валидный E-mail',
-];
+<script>
+export default {
+  data: () => ({
+    valid: true,
+    name: '',
+    nameRules: [
+      v => !!v || 'Это поле нужно заполнить',
+      v => (v && v.length <= 10) || 'Имя должно быть менее 10 символов',
+    ],
+    email: '',
+    emailRules: [
+      v => !!v || 'Это поле нужно заполнить',
+      v => /.+@.+\..+/.test(v) || 'Введите валидный E-mail',
+    ],
+  }),
 
-const validate = () => {
-  form.value.validate();
-};
+  methods: {
+    validate () {
+      this.$refs.form.validate()
+    },
+  },
+}
 </script>
-
 <style scoped>
 .form {
   background-color: white;
