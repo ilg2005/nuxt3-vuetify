@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLayout name="auth">
-      The rest of the authorization page
+      <AuthForm />
     </NuxtLayout>
 
   </div>

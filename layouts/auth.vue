@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="empty-layout text-white text-center pt-10">
+    <div class="empty-layout text-center pt-10">
       <slot/>
     </div>
   </div>
