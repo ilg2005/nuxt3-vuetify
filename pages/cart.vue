@@ -10,11 +10,14 @@
 import {useHead} from "nuxt/app";
 
 definePageMeta({
-  layouts: false
+  title: 'Корзина',
+  layouts: false,
 });
+
 useHead({
-  title: 'Корзина'
+  title: 'Корзина',
 });
+
 
 </script>
 

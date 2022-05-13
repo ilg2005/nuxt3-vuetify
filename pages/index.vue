@@ -9,6 +9,7 @@ import {useHead} from "nuxt/app";
 
 definePageMeta({
   layout: false,
+  title: 'Магазин'
 });
 useHead({
   title: 'Магазин'

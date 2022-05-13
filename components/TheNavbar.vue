@@ -14,7 +14,7 @@
           <v-app-bar-nav-icon></v-app-bar-nav-icon>
         </template>
 
-        <v-app-bar-title>My awesome shop</v-app-bar-title>
+        <v-app-bar-title>{{ $route.meta.title }}</v-app-bar-title>
 
         <v-spacer></v-spacer>
 
