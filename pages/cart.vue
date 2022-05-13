@@ -1,15 +1,21 @@
 <template>
   <div>
-    <Head>
-      <Title>Корзина</Title>
-    </Head>
+    <NuxtLayout name="main">
+      Контент корзины
+    </NuxtLayout>
   </div>
 </template>
 
-<script>
-export default {
-  name: "cart"
-}
+<script setup>
+import {useHead} from "nuxt/app";
+
+definePageMeta({
+  layouts: false
+});
+useHead({
+  title: 'Корзина'
+});
+
 </script>
 
 <style scoped>

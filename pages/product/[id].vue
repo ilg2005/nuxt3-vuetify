@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <Head>
-      <Title>Товар</Title>
-    </Head>
-  </div>
+  <NuxtLayout name="main">
+    Товар с id #
+  </NuxtLayout>
+
 </template>
 
-<script>
-export default {
-  name: "[id]"
-}
+<script setup>
+import {useHead} from "nuxt/app";
+
+definePageMeta({
+  layouts: false
+});
+useHead({
+  title: 'Товар'
+});
 </script>
 
 <style scoped>
