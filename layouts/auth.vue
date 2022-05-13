@@ -1,6 +1,8 @@
 <template>
   <div>
-    <slot/>
+    <div class="empty-layout text-white text-center pt-10">
+      <slot/>
+    </div>
   </div>
 </template>
 
@@ -8,5 +10,9 @@
 </script>
 
 <style scoped>
-
+.empty-layout {
+  display: block;
+  background-color: grey;
+  height: 100vh;
+}
 </style>
