@@ -1,5 +1,5 @@
 <template>
-  <v-card max-width="448" class="mx-auto" color="grey-lighten-3">
+  <v-card class="mx-auto" color="grey-lighten-3">
     <v-layout>
       <v-app-bar
           color="teal-darken-4"

@@ -10,6 +10,8 @@
     "nuxt": "3.0.0-rc.3"
   },
   "dependencies": {
+    "@mdi/font": "^6.6.96",
+    "import": "^0.0.6",
     "sass": "^1.51.0",
     "vuetify": "^3.0.0-beta.1"
   }
