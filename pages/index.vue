@@ -1,7 +1,7 @@
 <template>
-    <NuxtLayout name="main">
-      Карточки товара на индексную страницу
-    </NuxtLayout>
+  <NuxtLayout name="main">
+    <div class="mt-10 text-center">Карточки товара на индексную страницу</div>
+  </NuxtLayout>
 </template>
 
 <script setup>
