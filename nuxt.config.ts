@@ -4,7 +4,8 @@ import {defineNuxtConfig} from 'nuxt'
 export default defineNuxtConfig({
     css: [
         "vuetify/lib/styles/main.sass",
-        "@mdi/font/css/materialdesignicons.css"
+        "@mdi/font/css/materialdesignicons.css",
+        "@/assets/theme.css"
     ],
     fonts: [
         "@mdi/font/fonts/materialdesignicons-webfont.ttf"

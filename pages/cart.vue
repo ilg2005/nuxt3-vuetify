@@ -1,13 +1,15 @@
 <template>
   <div>
     <NuxtLayout name="main">
-      Контент корзины
+      <TheCart/>
     </NuxtLayout>
   </div>
 </template>
 
 <script setup>
-import {useHead} from "nuxt/app";
+import {useHead, useState} from "nuxt/app";
+import AuthForm from "../components/AuthForm";
+import TheCart from "../components/TheCart";
 
 definePageMeta({
   title: 'Корзина',
@@ -18,7 +20,8 @@ useHead({
   title: 'Корзина',
 });
 
-
+const products = useState('products');
+const categories = useState('categories');
 </script>
 
 <style scoped>
