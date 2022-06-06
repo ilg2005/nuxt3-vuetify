@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import {useHead, useAsyncData, useState} from "nuxt/app";
+import {useHead} from "nuxt/app";
 
 definePageMeta({
   layout: false,
@@ -21,7 +21,13 @@ useHead({
 })
 
 
-const { data, pending } = useAsyncData('serverItems', () => $fetch('http://nuxt3-shop.phpmaster.pw/test-server.php'));
+const { pending, data } = useLazyAsyncData('serverItems', () => $fetch('http://nuxt3-shop.phpmaster.pw/test-server.php'));
+console.log(data.value);
+watch(data, (newData) => {
+  // Because count starts out null, you won't have access
+  // to its contents immediately, but you can watch it.
+  console.log('new Data: ',newData);
+});
 
 //const products = computed(() => data.value.products);
 /*console.log(data.value);
