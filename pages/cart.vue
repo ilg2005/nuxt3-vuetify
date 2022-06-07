@@ -7,8 +7,7 @@
 </template>
 
 <script setup>
-import {useHead, useState} from "nuxt/app";
-import AuthForm from "../components/AuthForm";
+import {useHead} from "nuxt/app";
 import TheCart from "../components/TheCart";
 
 definePageMeta({
@@ -20,8 +19,6 @@ useHead({
   title: 'Корзина',
 });
 
-const products = useState('products');
-const categories = useState('categories');
 </script>
 
 <style scoped>

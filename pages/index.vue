@@ -4,13 +4,13 @@
         <div class="mt-10 text-center">Карточки товара на индексную страницу</div>
     -->
     <div class="mt-10 text-center text-white">
-      {{ data }}
+      {{ products }}
     </div>
   </NuxtLayout>
 </template>
 
 <script setup>
-import {useHead} from "nuxt/app";
+import {useHead, useState} from "nuxt/app";
 
 definePageMeta({
   layout: false,
@@ -22,18 +22,8 @@ useHead({
 
 
 const {data} = await useLazyAsyncData('serverItems', () => $fetch('http://nuxt3-shop.phpmaster.pw/test-server.php'));
-console.log(data.value.products);
 
-/*for(let item in data.value.products) {
-  console.log(data.value.products[item].title);
-}*/
-
-
-//const products = computed(() => data.value.products);
-/*console.log(data.value);
-
-  useState('products', () => data.products);
-  useState('categories', () => data.categories);*/
-
+const products = useState('products', () => data.value.products);
+useState('categories', () => data.value.categories);
 
 </script>
