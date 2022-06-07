@@ -22,6 +22,7 @@ useHead({
 
 
 const {pending, data: products} = useLazyAsyncData('serverItems', () => $fetch('http://nuxt3-shop.phpmaster.pw/test-server.php'));
+console.log('data:', products.value);
 watch(products, (newProducts, oldProducts) => {
   console.log('newProducts: ', newProducts);
   console.log('oldProducts: ', oldProducts);
