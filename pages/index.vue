@@ -1,10 +1,10 @@
 <template>
   <NuxtLayout name="main">
-<!--
-    <div class="mt-10 text-center">Карточки товара на индексную страницу</div>
--->
-    <div class="mt-10 text-center">
-      {{ pending ? 'Loading...' : data }}
+    <!--
+        <div class="mt-10 text-center">Карточки товара на индексную страницу</div>
+    -->
+    <div class="mt-10 text-center text-white">
+      {{ pending ? 'Loading...' : data.products[0] }}
     </div>
   </NuxtLayout>
 </template>
@@ -21,12 +21,12 @@ useHead({
 })
 
 
-const { pending, data } = useLazyAsyncData('serverItems', () => $fetch('http://nuxt3-shop.phpmaster.pw/test-server.php'));
+const {pending, data} = useLazyAsyncData('serverItems', () => $fetch('http://nuxt3-shop.phpmaster.pw/test-server.php'));
 console.log(data.value);
 watch(data, (newData) => {
   // Because count starts out null, you won't have access
   // to its contents immediately, but you can watch it.
-  console.log('new Data: ',newData);
+  console.log('new Data: ', newData);
 });
 
 //const products = computed(() => data.value.products);
