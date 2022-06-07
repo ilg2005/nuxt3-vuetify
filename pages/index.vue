@@ -4,7 +4,7 @@
         <div class="mt-10 text-center">Карточки товара на индексную страницу</div>
     -->
     <div class="mt-10 text-center text-white">
-      {{ pending ? 'Loading...' : products }}
+      {{ data }}
     </div>
   </NuxtLayout>
 </template>
@@ -21,12 +21,14 @@ useHead({
 })
 
 
-const {pending, data: products} = useLazyAsyncData('serverItems', () => $fetch('http://nuxt3-shop.phpmaster.pw/test-server.php'));
-console.log('data:', products.value);
-watch(products, (newProducts, oldProducts) => {
-  console.log('newProducts: ', newProducts);
-  console.log('oldProducts: ', oldProducts);
-})
+const {data} = await useLazyAsyncData('serverItems', () => $fetch('http://nuxt3-shop.phpmaster.pw/test-server.php'));
+console.log(data.value.products);
+
+/*for(let item in data.value.products) {
+  console.log(data.value.products[item].title);
+}*/
+
+
 //const products = computed(() => data.value.products);
 /*console.log(data.value);
 
