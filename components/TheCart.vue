@@ -53,7 +53,7 @@ const removeItemFromCart = item => {
 const decreaseQuantity = item => {
   item.quantity === 1 ? removeItemFromCart(item) : item.quantity--;
 }
-const getProductPrice = productId => products.value.find(product => product.id === productId).price;
+const getProductPrice = productId => products.value.find(product => product.id == productId).price;
 
 const calculatePrice = item => item.quantity * getProductPrice(item.id);
 </script>
