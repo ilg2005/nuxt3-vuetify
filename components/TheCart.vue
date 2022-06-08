@@ -8,25 +8,25 @@
         <tr>
           <th>Наименование</th>
           <th>Количество</th>
-          <th>Цена (шт)</th>
+          <th>Цена</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="item in cart"
             :key="item.id"
         >
-          <td>{{ getProductTitle(item.id) }}</td>
+          <td>{{ getProduct(item.id).title }}</td>
           <td>
-            <button class="btn primary" @click="increaseQuantity(item)">+</button>
-            {{ item.quantity }} шт.
             <button class="btn danger" @click="decreaseQuantity(item)">-</button>
+            {{ item.quantity }} шт.
+            <button class="btn primary" @click="item.quantity++">+</button>
           </td>
-          <td>{{ calculatePrice(item) }} руб.</td>
+          <td>{{ item.cost = calculateItemCost(item) }} руб.</td>
         </tr>
         </tbody>
       </table>
       <hr>
-      <p class="text-right"><strong>Всего: 14 200 руб.</strong></p>
+      <p class="text-right mb-5"><strong>Всего: {{ total }} руб.</strong></p>
       <p class="text-right">
         <button class="btn">Оплатить</button>
       </p>
@@ -42,8 +42,8 @@ const cart = useState('cart', () => [
   {id: 5, quantity: 1},
 ]);
 const products = useState('products');
-const getProductTitle = id => products.value.find(product => product.id == id).title;
-const increaseQuantity = item => item.quantity++;
+const getProduct = id => products.value.find(product => product.id == id);
+
 const removeItemFromCart = item => {
   const index = cart.value.indexOf(item);
   if (index > -1) {
@@ -53,9 +53,9 @@ const removeItemFromCart = item => {
 const decreaseQuantity = item => {
   item.quantity === 1 ? removeItemFromCart(item) : item.quantity--;
 }
-const getProductPrice = productId => products.value.find(product => product.id == productId).price;
+const calculateItemCost = item => item.quantity * getProduct(item.id).price;
+const total = computed(() => cart.value.reduce((acc, it) => acc + it.cost, 0));
 
-const calculatePrice = item => item.quantity * getProductPrice(item.id);
 </script>
 
 <style scoped>
