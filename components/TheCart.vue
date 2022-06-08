@@ -1,7 +1,7 @@
 <template>
   <v-container class="card mt-10">
 
-    <h3 class="text-center" v-if="!cart">В корзине пока ничего нет</h3>
+    <h3 class="text-center" v-if="!cart.length">В корзине пока ничего нет</h3>
     <div v-else>
       <table class="table">
         <thead>
@@ -12,16 +12,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="product in cart"
-            :key="product.id"
+        <tr v-for="item in cart"
+            :key="item.id"
         >
-          <td>{{ getProductTitle(product.id) }}</td>
+          <td>{{ getProductTitle(item.id) }}</td>
           <td>
-            <button class="btn primary" @click="increaseQuantity(product.id)">+</button>
-            {{ product.quantity }} шт.
-            <button class="btn danger">-</button>
+            <button class="btn primary" @click="increaseQuantity(item)">+</button>
+            {{ item.quantity }} шт.
+            <button class="btn danger" @click="decreaseQuantity(item)">-</button>
           </td>
-          <td>42 000 руб.</td>
+          <td>{{ calculatePrice(item) }} руб.</td>
         </tr>
         </tbody>
       </table>
@@ -43,7 +43,19 @@ const cart = useState('cart', () => [
 ]);
 const products = useState('products');
 const getProductTitle = id => products.value.find(product => product.id == id).title;
-const increaseQuantity = id => cart.value.find(product => product.id == id).quantity++;
+const increaseQuantity = item => item.quantity++;
+const removeItemFromCart = item => {
+  const index = cart.value.indexOf(item);
+  if (index > -1) {
+    cart.value.splice(index, 1);
+  }
+};
+const decreaseQuantity = item => {
+  item.quantity === 1 ? removeItemFromCart(item) : item.quantity--;
+}
+const getProductPrice = productId => products.value.find(product => product.id === productId).price;
+
+const calculatePrice = item => item.quantity * getProductPrice(item.id);
 </script>
 
 <style scoped>
