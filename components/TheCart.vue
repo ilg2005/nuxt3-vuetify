@@ -21,12 +21,12 @@
             {{ item.quantity }} шт.
             <button class="btn primary" @click="item.quantity++">+</button>
           </td>
-          <td>{{ item.cost = calculateItemCost(item) }} руб.</td>
+          <td>{{ formatCurrency(calculateItemCost(item)) }}</td>
         </tr>
         </tbody>
       </table>
       <hr>
-      <p class="text-right mb-5"><strong>Всего: {{ total }} руб.</strong></p>
+      <p class="text-right mb-5"><strong>Всего: {{ formatCurrency(total) }}</strong></p>
       <p class="text-right">
         <button class="btn">Оплатить</button>
       </p>
@@ -53,8 +53,13 @@ const removeItemFromCart = item => {
 const decreaseQuantity = item => {
   item.quantity === 1 ? removeItemFromCart(item) : item.quantity--;
 }
-const calculateItemCost = item => item.quantity * getProduct(item.id).price;
+const calculateItemCost = item => item.cost = item.quantity * getProduct(item.id).price;
 const total = computed(() => cart.value.reduce((acc, it) => acc + it.cost, 0));
+const formatCurrency = number => new Intl.NumberFormat(
+    'ru-RU',
+    {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}
+)
+    .format(number);
 
 </script>
 
