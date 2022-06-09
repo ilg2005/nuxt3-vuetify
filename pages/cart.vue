@@ -8,7 +8,7 @@
 
 <script setup>
 import {useHead} from "nuxt/app";
-import TheCart from "../components/TheCart";
+import TheCart from "../components/cart/TheCart";
 
 definePageMeta({
   title: 'Корзина',

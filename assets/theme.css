@@ -68,14 +68,14 @@ h3 {
 /*}*/
 
 .btn {
-    color: #42b983;
+    color: #000;
     position: relative;
     place-content: center;
     place-items: center;
     width: fit-content;
     border-radius: 99px;
     letter-spacing: 0.05em;
-    border: 1px solid #42b983;
+    border: 1px solid black;
     text-decoration: none;
     text-transform: uppercase;
     margin-right: 10px;
@@ -85,6 +85,10 @@ h3 {
     outline: none;
     background: #fff;
     transition: all 0.22s;
+}
+.btn-success {
+    color: #42b983;
+    border: 1px solid #42b983;
 }
 
 .btn:hover {
