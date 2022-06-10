@@ -6,7 +6,7 @@
 
 <script setup>
 import {useHead} from "nuxt/app";
-import Shop from "../components/Shop";
+import Shop from "../../components/Shop";
 
 definePageMeta({
   layout: false,
